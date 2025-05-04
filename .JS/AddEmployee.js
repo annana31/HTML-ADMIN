@@ -35,8 +35,5 @@ document.getElementById('employeeForm').addEventListener('submit', (event) => {
 
     const formData = new FormData(document.getElementById('employeeForm'));
 
-    // Here you would typically use fetch or XMLHttpRequest to send the FormData to your server.
-    // The server-side code would then handle saving the data to your database.
-
     alert('Form data submitted. Implement server-side handling.');
 });
