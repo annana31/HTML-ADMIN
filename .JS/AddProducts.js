@@ -1,49 +1,56 @@
-// Image Preview Handling for multiple images
-const productPhotoInputs = [
-    document.getElementById('productPhoto1'),
-    document.getElementById('productPhoto2'),
-    document.getElementById('productPhoto3')
-];
-const productPhotoPreviews = [
-    document.getElementById('productPhotoPreview1'),
-    document.getElementById('productPhotoPreview2'),
-    document.getElementById('productPhotoPreview3')
-];
+// Enhanced Image Preview Handling for up to 3 images
+for (let i = 1; i <= 3; i++) {
+    const input = document.getElementById('productPhoto${i}');
+    const preview = document.getElementById('productPhotoPreview${i}');
 
-productPhotoInputs.forEach((input, index) => {
-    input.addEventListener('change', () => {
-        const file = input.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                productPhotoPreviews[index].src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-});
+    if (input && preview) {
+        input.addEventListener('change', () => {
+            const file = input.files[0];
+            if (file) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        preview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('File selected in slot ${i} is not an image. Please select an image file.');
+                    input.value = ''; // Clear the invalid file
+                    preview.src = 'placeholder.jpg'; // Reset preview
+                }
+            } else {
+                preview.src = 'placeholder.jpg';
+            }
+        });
+    }
+}
 
-
-// Form submission (Remember to replace with your server-side handling)
-document.getElementById('addProductForm').addEventListener('submit', (event) => {
+// Form submission with basic validation feedback
+document.getElementById('addProductForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(document.getElementById('addProductForm'));
 
-    // Here you would use fetch or XMLHttpRequest to send formData to your server.
-    // The server-side code would handle saving the data to your database.
+    const form = event.target;
+    const formData = new FormData(form);
 
-    // Placeholder alert - Replace with actual server communication
-    fetch('/your-server-endpoint', { // Replace '/your-server-endpoint' with your actual endpoint
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // Handle successful submission (e.g., display a success message)
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        // Handle errors (e.g., display an error message)
-    });
+    try {
+        const response = await fetch('/your-server-endpoint', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) throw new Error('Server error');
+
+        const result = await response.json();
+        alert('Product added successfully!');
+        form.reset();
+
+        // Reset previews after form reset
+        for (let i = 1; i <= 3; i++) {
+            const preview = document.getElementById('productPhotoPreview${i}');
+            if (preview) preview.src = 'placeholder.jpg';
+        }
+    } catch (err) {
+        console.error('Submission error:', err);
+        alert('Failed to add product. Please try again.');
+    }
 });
