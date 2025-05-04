@@ -1,93 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/AddProducts.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/AddProducts.css" />
 </head>
 <body>
-    <div class="sidebar">
-        <ul>
-            <li><a href="AddEmployee.html">Add Employee</a></li>
-            <li><a href="AddProducts.html">Add Products</a></li>
-            <li><a href="AdminProfile.html">Admin Profile</a></li>
-            <li><a href="EmployeeDetails.html">Employee Details</a></li>
-        </ul>
-    </div>
-    <div class="content">
-        <h1>Add Product</h1>
-        <form id="addProductForm" enctype="multipart/form-data">
-            <div class="form-grid">
-                <div class="form-section image-upload">
-                    <h3>Upload Images (Max 3)</h3>
-                    <div class="image-preview-container">
-                        <div class="image-preview">
-                            <img id="productPhotoPreview1" src="placeholder.jpg" alt="Product Photo 1">
-                            <input type="file" id="productPhoto1" name="productPhoto1" accept="image/*">
-                        </div>
-                        <div class="image-preview">
-                            <img id="productPhotoPreview2" src="placeholder.jpg" alt="Product Photo 2">
-                            <input type="file" id="productPhoto2" name="productPhoto2" accept="image/*">
-                        </div>
-                        <div class="image-preview">
-                            <img id="productPhotoPreview3" src="placeholder.jpg" alt="Product Photo 3">
-                            <input type="file" id="productPhoto3" name="productPhoto3" accept="image/*">
-                        </div>
-                    </div>
-                </div>
+  <div class="sidebar">
+    <ul>
+      <li><a href="AddEmployee.html">Add Employee</a></li>
+      <li><a href="AddProducts.html">Add Products</a></li>
+      <li><a href="AdminProfile.html">Admin Profile</a></li>
+      <li><a href="EmployeeDetails.html">Employee Details</a></li>
+    </ul>
+  </div>
 
-                <div class="form-section">
-                    <label for="productName">Product Name<span>*</span></label>
-                    <input type="text" id="productName" name="productName" required>
-                </div>
-                <div class="form-section">
-                    <label for="productBrand">Brand<span>*</span></label>
-                    <select id="productBrand" name="productBrand" required>
-                        <option value="">- Select -</option>
-                        <option value="Brand A">Brand A</option>
-                        <option value="Brand B">Brand B</option>
-                        <option value="Brand C">Brand C</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-section">
-                    <label for="productDescription">Description</label>
-                    <textarea id="productDescription" name="productDescription"></textarea>
-                </div>
-                <div class="form-section">
-                    <label for="productWeight">Weight (kg)</label>
-                    <input type="number" id="productWeight" name="productWeight" step="0.1">
-                </div>
-                <div class="form-section">
-                    <label for="productPrice">Price<span>*</span></label>
-                    <div class="price-input">
-                        <input type="number" id="productPrice" name="productPrice" required>
-                        <select id="currency" name="currency">
-                            <option value="USD">$</option>
-                            <option value="PHP">₱</option>
-                            <option value="EUR">€</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-section">
-                    <label for="productAvailability">Availability</label>
-                    <label class="switch">
-                        <input type="checkbox" id="productAvailability" name="productAvailability" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <span>Enabled</span>
-                </div>
-                <div class="form-section">
-                    <label for="stockQuantity">Stock Quantity</label>
-                    <input type="number" id="stockQuantity" name="stockQuantity" min="0">
-                </div>
-            </div>
-            <button type="submit">Add Product</button>
-        </form>
-    </div>
+  <div class="content">
+    <h1>Add Product</h1>
+    <form id="addProductForm" enctype="multipart/form-data">
+      <!-- Image Upload Section -->
+      <div class="image-upload-section">
+        <h3>Product Images</h3>
+        <div class="image-upload-grid">
+            <label class="image-upload-card">
+                <img id="productPhotoPreview1" src="placeholder.jpg" alt="Product Photo 1">
+                <input type="file" id="productPhoto1" name="productPhoto1" accept="image/*">
+              </label>
+              <label class="image-upload-card">
+                <img id="productPhotoPreview2" src="placeholder.jpg" alt="Product Photo 2">
+                <input type="file" id="productPhoto2" name="productPhoto2" accept="image/*">
+              </label>
+              <label class="image-upload-card">
+                <img id="productPhotoPreview3" src="placeholder.jpg" alt="Product Photo 3">
+                <input type="file" id="productPhoto3" name="productPhoto3" accept="image/*">
+              </label>
+        </div>
+      </div>
 
-    <script src="js/AddProducts.js"></script>
+      <!-- Product Info -->
+      <div class="form-section">
+        <label for="productName">Name<span>*</span></label>
+        <input type="text" id="productName" name="productName" required>
+      </div>
+
+      <div class="form-section">
+        <label for="productBrand">Brand<span>*</span></label>
+        <select id="productBrand" name="productBrand" required>
+          <option value="">Select a brand</option>
+          <option value="Sweets Paradise">Sweets Paradise</option>
+          <option value="Byron Bay">Byron Bay</option>
+          <option value="Krispy Kreme">Krispy Kreme</option>
+          <option value="Olipop">Olipop</option>
+          <option value="Tea Forte">Tea Forte</option>
+          <option value="Compartes">Compartes</option>
+          <option value="Sugarfina">Sugarfina</option>
+          <option value="Chobani">Chobani</option>
+          <option value="Laduree">Laduree</option>
+          <option value="Bluestar">Bluestar</option>
+          <option value="Graze">Graze</option>
+          <option value="Granblue Kitchen">Granblue Kitchen</option>
+          <option value="Olipop">Olipop</option>
+        </select>
+      </div>
+
+      <div class="form-section">
+        <label for="productDescription">Description</label>
+        <textarea id="productDescription" name="productDescription" rows="4"></textarea>
+      </div>
+
+      <div class="form-section">
+        <label for="productWeight">Weight (kg)</label>
+        <input type="number" id="productWeight" name="productWeight" step="0.01">
+      </div>
+
+      <div class="form-section">
+        <label for="productPrice">Price<span>*</span></label>
+        <div class="price-group">
+          <input type="number" id="productPrice" name="productPrice" required>
+          <select id="currency" name="currency">
+            <option value="USD">$</option>
+            <option value="PHP">₱</option>
+            <option value="EUR">€</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section toggle-section">
+        <label>Product Availability</label>
+        <label class="switch">
+          <input type="checkbox" id="productAvailability" name="productAvailability" checked>
+          <span class="slider round"></span>
+        </label>
+        <span class="status-label">Enabled</span>
+      </div>
+
+      <div class="form-section">
+        <label for="stockQuantity">Stock Quantity</label>
+        <input type="number" id="stockQuantity" name="stockQuantity" min="0">
+      </div>
+
+      <button type="submit" class="submit-button">Add Product</button>
+    </form>
+  </div>
+
+  <script src="js/AddProducts.js"></script>
 </body>
 </html>
