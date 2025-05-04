@@ -1,68 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Profile</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/AdminProfile.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Profile</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/AdminProfile.css"/>
 </head>
 <body>
-    <div class="topbar">
-        <div class="topbar-icons">
-            <img src="images/logo.png" alt="Sabrosa Logo" class="logo">
+  <div class="sidebar">
+    <ul>
+      <li><a href="#">Add Employee</a></li>
+      <li><a href="#">Add Products</a></li>
+      <li><a href="#">Admin Profile</a></li>
+      <li><a href="#">Employee Details</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h2>My Profile</h2>
+
+    <div class="profile-card">
+        <div class="profile-image-container" onclick="document.getElementById('profileUpload').click()">
+          <img src="profile.jpg" alt="Profile Picture" id="profileImage" class="profile-pic">
+          <label for="profileUpload" class="upload-label">Upload Photo</label>
+          <input type="file" id="profileUpload" style="display: none" accept="image/*">
         </div>
-        <div class="search-container">
-            <input type="text" placeholder="Search...">
-            <button type="submit">🔍</button>
-            <span class="notification">🔔</span>
-            <span class="profile-icon">👤</span>
+        <div class="profile-details">
+          <h3>Natashia Khaleira</h3>
+          <p>Admin</p>
+          <p>Leeds, United Kingdom</p>
         </div>
+      </div>
+
+    <div class="info-section">
+      <div class="info-section-header">
+        <h3>Personal Information</h3>
+        <button>Edit</button>
+      </div>
+      <div class="info-content">
+        <p><strong>First Name:</strong> Natashia</p>
+        <p><strong>Last Name:</strong> Khaleira</p>
+        <p><strong>Date of Birth:</strong> 12-10-1990</p>
+        <p><strong>Email Address:</strong> info@binary-fusion.com</p>
+        <p><strong>Phone Number:</strong> (+62) 821 2554-5846</p>
+        <p><strong>User Role:</strong> Admin</p>
+      </div>
     </div>
 
-    <div class="sidebar">
-        <ul>
-            <li><a href="AdminProfile.html">Admin Profile</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="EmployeeDetails.html">Employee Details</a></li>
-            <li><a href="AddEmployee.html">Add Employee</a></li>
-            <li><a href="AddProducts.html">Products</a></li>
-            <li><a href="handle_orders.html">Orders</a></li>
-            <li><a href="handle_customers.html">Customers</a></li>
-        </ul>
+    <div class="info-section">
+      <div class="info-section-header">
+        <h3>Address</h3>
+        <button>Edit</button>
+      </div>
+      <div class="info-content">
+        <p><strong>Country:</strong> United Kingdom</p>
+        <p><strong>City:</strong> Leeds, East London</p>
+        <p><strong>Postal Code:</strong> ERT 1254</p>
+      </div>
     </div>
-<tr>
-    <td>Phone Number:</td>
-    <td>(+62) 21 2554-5846</td>
-</tr>
-<tr>
-    <td>Date of Birth:</td>
-    <td>12-10-1990</td>
-</tr>
-<tr>
-    <td>User Role:</td>
-    <td>Admin</td>
-</tr>
-</table>
-<button>Edit</button>
-</div>
+  </div>
 
-<div class="address">
-<h3>Address</h3>
-<table>
-<tr>
-    <td>Country:</td>
-    <td>United Kingdom</td>
-</tr>
-<tr>
-    <td>City:</td>
-    <td>Leeds</td>
-</tr>
-<tr>
-    <td>Postal Code:</td>
-    <td>ERT 1254</td>
-</tr>
-</table>
-<button>Edit</button>
-</div>
-</div>
+  <script>
+    document.getElementById('profileUpload').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          document.getElementById('profileImage').src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
