@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/AddEmployee.css">
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="AddEmployee.html">Add Employee</a></li>
+            <li><a href="AddProducts.html">Add Products</a></li>
+            <li><a href="AdminProfile.html">Admin Profile</a></li>
+            <li><a href="EmployeeDetails.html">Employee Details</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Add Employee</h1>
+        <div class="form-container">
+            <div class="photo-center">
+                <label for="employeePhoto">
+                    <img id="employeePhotoPreview" src="placeholder.jpg" alt="Employee Photo">
+                    <div class="upload-text">Upload Photo</div>
+                </label>
+                <input type="file" id="employeePhoto" accept="image/*" required>
+            </div>
+            <form id="employeeForm">
+                <div class="form-grid">
+                    <div class="form-section">
+                        <label for="firstName">First Name<span>*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" id="middleName" name="middleName">
+                    </div>
+                    <div class="form-section">
+                        <label for="lastName">Last Name<span>*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="employeeId">Employee ID<span>*</span></label>
+                        <input type="text" id="employeeId" name="employeeId" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="email">Email<span>*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="address">Address<span>*</span></label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="phoneNumber">Phone Number<span>*</span></label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="0000-000-0000" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="birthday">Birthday<span>*</span></label>
+                        <input type="date" id="birthday" name="birthday" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="age">Age<span>*</span></label>
+                        <input type="number" id="age" name="age" readonly required>
+                    </div>
+                    <div class="form-section">
+                        <label for="jobPosition">Job Position<span>*</span></label>
+                        <input type="text" id="jobPosition" name="jobPosition" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="employeeType">Employee Type<span>*</span></label>
+                        <select id="employeeType" name="employeeType" required>
+                            <option value="">- Select -</option>
+                            <option value="Employee">Employee</option>
+                            <option value="Contractor">Contractor</option>
+                            <option value="Intern">Intern</option>
+                        </select>
+                    </div>
+                    <div class="form-section">
+                        <label for="employeeStatus">Employee Status<span>*</span></label>
+                        <select id="employeeStatus" name="employeeStatus" required>
+                            <option value="">- Select -</option>
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Contract">Contract</option>
+                        </select>
+                    </div>
+                    <div class="form-section">
+                        <label for="employeeEndDate">Employee End Date<span>*</span></label>
+                        <input type="date" id="employeeEndDate" name="employeeEndDate" required>
+                    </div>
+                    <div class="form-section">
+                        <label for="dateOfHire">Date of Hire<span>*</span></label>
+                        <input type="date" id="dateOfHire" name="dateOfHire" required>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit">Create Employee</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/AddEmployee.js"></script>
+</body>
+</html>
