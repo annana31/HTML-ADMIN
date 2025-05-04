@@ -8,12 +8,24 @@
   <link rel="stylesheet" href="css/AdminProfile.css"/>
 </head>
 <body>
+    <div class="topbar">
+        <div class="topbar-icons">
+            <img src="images/logo.png" alt="Sabrosa Logo" class="logo">
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button type="submit">🔍</button>
+            <span class="notification">🔔</span>
+            <span class="profile-icon">👤</span>
+        </div>
+    </div>
+    
   <div class="sidebar">
     <ul>
-      <li><a href="#">Add Employee</a></li>
-      <li><a href="#">Add Products</a></li>
-      <li><a href="#">Admin Profile</a></li>
-      <li><a href="#">Employee Details</a></li>
+        <li><a href="AddEmployee.html">Add Employee</a></li>
+        <li><a href="AddProducts.html">Add Products</a></li>
+        <li><a href="AdminProfile.html">Admin Profile</a></li>
+        <li><a href="EmployeeDetails.html">Employee Details</a></li>
     </ul>
   </div>
 
@@ -72,6 +84,60 @@
         reader.readAsDataURL(file);
       }
     });
-  </script>
+  
+    document.querySelectorAll('.info-section').forEach(section => {
+      const editBtn = section.querySelector('button');
+      const content = section.querySelector('.info-content');
+  
+      editBtn.addEventListener('click', () => {
+        if (editBtn.textContent === "Edit") {
+          editBtn.textContent = "Save";
+          [...content.children].forEach(p => {
+            const label = p.querySelector('strong');
+            const text = p.textContent.replace(label.textContent, '').trim();
+            const input = document.createElement('input');
+            input.type = "text";
+            input.value = text;
+            input.style.marginLeft = '10px';
+            p.innerHTML = '';
+            p.appendChild(label);
+            p.appendChild(input);
+          });
+        } else {
+          editBtn.textContent = "Edit";
+          let firstName = '', lastName = '', userRole = '', city = '', country = '';
+  
+          [...content.children].forEach(p => {
+            const label = p.querySelector('strong');
+            const input = p.querySelector('input');
+            const value = input.value;
+            const labelText = label.textContent.toLowerCase();
+  
+            if (labelText.includes('first name')) firstName = value;
+            if (labelText.includes('last name')) lastName = value;
+            if (labelText.includes('user role')) userRole = value;
+            if (labelText.includes('city')) city = value;
+            if (labelText.includes('country')) country = value;
+  
+            p.innerHTML = `${label.outerHTML} ${value}`;
+          });
+  
+          const profileDetails = document.querySelector('.profile-details');
+          if (profileDetails) {
+            if (firstName || lastName) {
+              profileDetails.querySelector('h3').textContent = `${firstName} ${lastName}`.trim();
+            }
+            if (userRole) {
+              profileDetails.querySelectorAll('p')[0].textContent = userRole;
+            }
+            if (city || country) {
+              profileDetails.querySelectorAll('p')[1].textContent = `${city}${city && country ? ', ' : ''}${country}`;
+            }
+          }
+        }
+      });
+    });
+  </script>  
+  
 </body>
 </html>
