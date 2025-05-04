@@ -1,116 +1,166 @@
-.profile-container {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 20px auto;
-}
-
-.profile-header {
-    display: flex;
-    gap: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
-}
-
-.profile-info img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.profile-info {
-    flex: 1;
-}
-
-.profile-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-gap: 10px;
-}
-
-.stat {
-    text-align: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.stat i {
-    font-size: 2em;
-    margin-bottom: 5px;
-}
-
-.profile-tabs {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.profile-tabs button {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.profile-tabs button.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.profile-content {
-    margin-top: 20px;
-}
-
-.about-section p {
-    margin-bottom: 5px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.social-icons i {
-    font-size: 1.2em;
-    color: #555;
-}
-
-.edit-icon {
-    cursor: pointer;
-    margin-left: 5px;
-    font-size: 0.8em;
-    color: #555;
-}
-
-.editable {
-    border: 1px solid #ccc;
-    padding: 5px;
-}
-
-.sidebar {
-    width: 200px;
+/* Reset and Base */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #FFEDFA;
+    overflow-x: hidden;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
     background-color: #FF90BB;
     position: fixed;
     height: 100vh;
     padding-top: 20px;
-}
-
-.sidebar ul {
+  }
+  
+  .sidebar ul {
     list-style: none;
     padding: 0;
-}
-
-.sidebar ul li a {
+  }
+  
+  .sidebar ul li a {
     color: white;
     text-decoration: none;
     display: block;
     padding: 15px;
     transition: background 0.3s;
-}
-
-.sidebar ul li a:hover {
+  }
+  
+  .sidebar ul li a:hover {
     background-color: #c26488;
-}
+  }
+  
+  /* Layout Container */
+  .container {
+    max-width: 1400px;
+    margin-left: 240px;
+    padding: 40px 40px;
+    box-sizing: border-box;
+  }
+  
+  /* Page Title */
+  .container h2 {
+    font-size: 26px;
+    margin-bottom: 28px;
+    color: #0118D8;
+  }
+  
+  /* Profile Card */
+  .profile-card {
+    display: flex;
+    background-color: white;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    width: 200%;
+    max-width: 200%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  /* Profile Image & Upload */
+  .profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .upload-label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #0077cc;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .upload-label:hover {
+    text-decoration: underline;
+  }
+  
+  #profileUpload {
+    display: none;
+  }
+  
+  /* Profile Text */
+  .profile-details {
+    flex-grow: 1;
+    min-width: 250px;
+  }
+  
+  .profile-details h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: #1e1e1e;
+  }
+  
+  .profile-details p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #555;
+  }
+  
+  /* Info Sections */
+  .info-section {
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    margin-bottom: 30px;
+    width: 200%;
+    max-width: 200%;
+  }
+  
+  .info-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .info-section-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #222;
+  }
+  
+  .info-section button {
+    background-color: #FF90BB;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .info-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px 30px;
+  }
+  
+  .info-content p {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+  }
+  
+  .info-content strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #111;
+  }
