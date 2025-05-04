@@ -1,4 +1,3 @@
-// Enhanced Image Preview Handling for up to 3 images
 for (let i = 1; i <= 3; i++) {
     const input = document.getElementById(`productPhoto${i}`);
     const preview = document.getElementById(`productPhotoPreview${i}`);
@@ -15,8 +14,8 @@ for (let i = 1; i <= 3; i++) {
                     reader.readAsDataURL(file);
                 } else {
                     alert('File selected in slot ${i} is not an image. Please select an image file.');
-                    input.value = ''; // Clear the invalid file
-                    preview.src = 'placeholder.jpg'; // Reset preview
+                    input.value = ''; 
+                    preview.src = 'placeholder.jpg'; 
                 }
             } else {
                 preview.src = 'placeholder.jpg';
@@ -25,7 +24,6 @@ for (let i = 1; i <= 3; i++) {
     }
 }
 
-// Form submission with basic validation feedback
 document.getElementById('addProductForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -44,7 +42,7 @@ document.getElementById('addProductForm').addEventListener('submit', async (even
         alert('Product added successfully!');
         form.reset();
 
-        // Reset previews after form reset
+
         for (let i = 1; i <= 3; i++) {
             const preview = document.getElementById(`productPhotoPreview${i}`);
             if (preview) preview.src = 'placeholder.jpg';
