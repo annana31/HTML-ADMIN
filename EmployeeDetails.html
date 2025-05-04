@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="css/EmployeeDetails.css">
 </head>
 <body>
+  <div class="topbar">
+    <div class="topbar-icons">
+        <img src="images/logo.png" alt="Sabrosa Logo" class="logo">
+    </div>
+    <div class="search-container">
+        <input type="text" placeholder="Search...">
+        <button type="submit">🔍</button>
+        <span class="notification">🔔</span>
+        <span class="profile-icon">👤</span>
+    </div>
+</div>
+
     <div class="sidebar">
         <ul>
             <li><a href="AddEmployee.html">Add Employee</a></li>
@@ -17,66 +29,58 @@
         </ul>
     </div>
     <div class="content">
-        <h1>Java 2 Days HR Web Application</h1>
-        <button id="createNewEmployee">Create New Employee</button>
-        <table>
-            <thead>
-                <tr>
-                    <th>Employee_Id</th>
-                    <th>First_Name</th>
-                    <th>Last_Name</th>
-                    <th>Email</th>
-                    <th>Phone_Number</th>
-                    <th>Job_Id</th>
-                    <th>Salary</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="employeeTableBody"></tbody>
-        </table>
+      <h1>Employees</h1>
+      <button id="createNewEmployee">+Create New Employee</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Employee_Id</th>
+            <th>First_Name</th>
+            <th>Last_Name</th>
+            <th>Email</th>
+            <th>Phone_Number</th>
+            <th>Job_Position</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+      </table>
     </div>
-
+  
     <script>
-      document.getElementById('createNewEmployee').addEventListener('click', () => {
-        window.location.href = 'AddEmployee.html'; 
-      });
-
-      const employeeData = [
-        { Employee_Id: 198, First_Name: 'Donald', Last_Name: 'OConnell', Email: 'DOCONNEL', Phone_Number: '650.507.9833', Job_Id: 'SH_CLERK', Salary: 2600 },
-        { Employee_Id: 199, First_Name: 'Douglas', Last_Name: 'Grant', Email: 'DGRANT', Phone_Number: '650.507.9844', Job_Id: 'SH_CLERK', Salary: 2600 },
-        { Employee_Id: 200, First_Name: 'Jennifer', Last_Name: 'Whalen', Email: 'JWHALEN', Phone_Number: '515.123.4444', Job_Id: 'AD_ASST', Salary: 4400 },
-        { Employee_Id: 201, First_Name: 'Michael', Last_Name: 'Hartstein', Email: 'MHARTSTE', Phone_Number: '515.123.5555', Job_Id: 'MK_MAN', Salary: 13000 },
-        { Employee_Id: 202, First_Name: 'Pat', Last_Name: 'Fay', Email: 'PFAY', Phone_Number: '603.123.6666', Job_Id: 'MK_REP', Salary: 6000 },
-        { Employee_Id: 203, First_Name: 'Susan', Last_Name: 'Mavris', Email: 'SMAVRIS', Phone_Number: '515.123.7777', Job_Id: 'HR_REP', Salary: 6500 },
-        { Employee_Id: 204, First_Name: 'Hermann', Last_Name: 'Baer', Email: 'HBAER', Phone_Number: '515.123.8888', Job_Id: 'PR_REP', Salary: 10000 },
-        { Employee_Id: 205, First_Name: 'Shelley', Last_Name: 'Higgins', Email: 'SHIGGINS', Phone_Number: '515.123.8080', Job_Id: 'AC_MGR', Salary: 12008 },
-        { Employee_Id: 206, First_Name: 'William', Last_Name: 'Gietz', Email: 'WGIETZ', Phone_Number: '515.123.8181', Job_Id: 'AC_ACCOUNT', Salary: 8300 },
-        { Employee_Id: 100, First_Name: 'Steven', Last_Name: 'King', Email: 'SKING', Phone_Number: '515.123.4567', Job_Id: 'AD_PRES', Salary: 24000 },
-        { Employee_Id: 101, First_Name: 'Neena', Last_Name: 'Kochhar', Email: 'NKOCHHAR', Phone_Number: '515.123.4568', Job_Id: 'AD_VP', Salary: 17000 },
-        { Employee_Id: 102, First_Name: 'Lex', Last_Name: 'De Haan', Email: 'LDEHAAN', Phone_Number: '515.123.4569', Job_Id: 'AD_VP', Salary: 17000 },
-        { Employee_Id: 103, First_Name: 'Alexander', Last_Name: 'Hunold', Email: 'AHUNOLD', Phone_Number: '590.423.4567', Job_Id: 'IT_PROG', Salary: 9000 }
-      ];
-
+      const tableBody = document.getElementById('employeeTableBody');
+      const employees = JSON.parse(localStorage.getItem("employees")) || [];
+  
       function renderTable() {
-        const tableBody = document.getElementById('employeeTableBody');
         tableBody.innerHTML = '';
-
-        employeeData.forEach(employee => {
-          const row = tableBody.insertRow();
-          Object.values(employee).forEach(value => {
-            const cell = row.insertCell();
-            cell.textContent = value;
-          });
-          const actionCell = row.insertCell();
-          actionCell.innerHTML = '<a href="#" onclick="editEmployee(' + employee.Employee_Id + ')">Edit</a>';
+        employees.forEach((emp, index) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${emp.Employee_Id}</td>
+            <td>${emp.First_Name}</td>
+            <td>${emp.Last_Name}</td>
+            <td>${emp.Email}</td>
+            <td>${emp.Phone_Number}</td>
+            <td>${emp.Job_Position}</td>
+            <td>${emp.Status}</td>
+            <td><button onclick="editEmployee('${emp.Employee_Id}')">Edit</button></td>
+          `;
+          tableBody.appendChild(row);
         });
       }
-
-      function editEmployee(employeeId) {
-        alert('Editing employee ' + employeeId); 
+  
+      function editEmployee(id) {
+        localStorage.setItem("editEmployeeId", id);
+        window.location.href = "AddEmployee.html";
       }
-
+  
+      document.getElementById('createNewEmployee').addEventListener('click', () => {
+        localStorage.removeItem("editEmployeeId");
+        window.location.href = "AddEmployee.html";
+      });
+  
       renderTable();
     </script>
-</body>
-</html>
+  </body>
+  </html>
