@@ -1,7 +1,7 @@
 // Enhanced Image Preview Handling for up to 3 images
 for (let i = 1; i <= 3; i++) {
-    const input = document.getElementById('productPhoto${i}');
-    const preview = document.getElementById('productPhotoPreview${i}');
+    const input = document.getElementById(`productPhoto${i}`);
+    const preview = document.getElementById(`productPhotoPreview${i}`);
 
     if (input && preview) {
         input.addEventListener('change', () => {
@@ -46,7 +46,7 @@ document.getElementById('addProductForm').addEventListener('submit', async (even
 
         // Reset previews after form reset
         for (let i = 1; i <= 3; i++) {
-            const preview = document.getElementById('productPhotoPreview${i}');
+            const preview = document.getElementById(`productPhotoPreview${i}`);
             if (preview) preview.src = 'placeholder.jpg';
         }
     } catch (err) {
