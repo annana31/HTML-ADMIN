@@ -3,41 +3,100 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex; /* Maintain flexbox for layout */
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0; /* Adjust to cover the full width */
+    right: 0;
+    height: 60px;
+    background-color: #FF90BB;
+    border-bottom: 1px solid #ddd;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.topbar-logo {
+    max-height: 100px;
+    width: auto;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px 0 0 20px;
+    margin-left: 20px;
+    outline: none;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-left: none;
+    background-color: #eee;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+}
+
+.topbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-icons .notification,
+.topbar-icons .profile-icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.topbar-icons .logo {
+    height: 35px;
 }
 
 .sidebar {
     width: 200px;
-    background-color: #333;
-    color: white;
-    height: 100vh;
+    background-color: #FFEDFA;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 60px; /* Start below the topbar */
+    height: calc(100vh - 60px); /* Adjust height dynamically */
+    padding-top: 20px;
+    overflow-y: auto;
 }
 
 .sidebar ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    padding: 15px 20px;
 }
 
 .sidebar ul li a {
     color: white;
     text-decoration: none;
     display: block;
+    padding: 15px;
+    transition: background 0.3s;
 }
 
 .sidebar ul li a:hover {
-    background-color: #444;
+    background-color: #c26488;
 }
 
 .content {
-    margin-left: 200px;
+    margin-left: 200px; /* Adjust for sidebar width */
     padding: 20px;
-    width: calc(100% - 200px);
+    width: calc(100% - 200px); /* Adjust for sidebar width */
+    /*Crucial change: position the content below the topbar*/
+    margin-top: 60px; /* Add margin-top equal to topbar height */
+    padding-top: 0; /* Remove padding-top from content */
 }
