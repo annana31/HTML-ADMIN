@@ -1,8 +1,25 @@
+body {
+    background-color: #FFEDFA;
+    color:#3c4ee9;
+}
+
+h1 { 
+    color: #0118D8; 
+  }
+
 .content {
-    background-color: #f9f9f9;
+    background-color: #FFEDFA;
+}
+
+button {
+    background-color: #FF90BB;
+
+    color: white;
+    border: #3c4ee9;
 }
 
 table {
+    margin-top: 0.5in;
     width: 100%;
     border-collapse: collapse;
 }
@@ -10,10 +27,43 @@ table {
 th, td {
     padding: 12px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #FF90BB;
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: #FF90BB;
     color: white;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #FF90BB;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #c26488;
 }
