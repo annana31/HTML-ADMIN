@@ -1,3 +1,12 @@
+body {
+    background-color: #FFEDFA;
+    color:#3c4ee9;
+} 
+
+h1 { 
+    color: #0118D8; 
+  }
+
 .content {
     margin-left: 200px;
     padding: 20px;
@@ -21,7 +30,7 @@
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border: 1px solid #ccc;
+    border: 1px solid #0118D8;
     display: block;
     margin: 0 auto 10px;
 }
@@ -31,7 +40,7 @@
 }
 
 .upload-text {
-    color: #4CAF50;
+    color: #0118D8;
     cursor: pointer;
 }
 
@@ -78,7 +87,7 @@ select {
 }
 
 button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #FF90BB;
     color: white;
     padding: 12px 30px;
     border: none;
@@ -87,9 +96,42 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #b65e80;
 }
 
 label span {
-    color: red;
+    color: rgb(245, 21, 196);
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #FF90BB;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #c26488;
 }
